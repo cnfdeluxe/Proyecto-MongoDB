@@ -1,31 +1,31 @@
 <?php
 
+spl_autoload_register( function( $NombreClase ) {
+        include_once($NombreClase . '.php');
+    } );
+
     class BDPelicula{
     //Listar todas las peliculas
     public static function mostrar(){
-        $dbh = Db::conectar();
-
+        $bd = Db::conectar();
         
+        //Dentro de la base de datos seleccionamos una coleccion (tabla)
+        $coleccion = $bd->pelicula;
 
-       /* try {
-            $stmt = $dbh->prepare("SELECT * FROM pelicula");
-    //Antes de ejecutar la consulta se debe dar valor a la variable :genero
-        $stmt->execute();
-        $peliculas = $stmt->fetchAll(PDO::FETCH_OBJ);
-        foreach ($peliculas as $pelicula){
-            $peliculaObj = new Pelicula($pelicula->id_pelicula, $pelicula->titulo, $pelicula->genero, $pelicula->director,$pelicula->year,$pelicula->sinopsis,$pelicula->portada);
-            $listaPeliculas[] = $peliculaObj;
-        } 
+        //Buscamos todas las peliculas
+        $cursor = $coleccion->find();
+        $listaPeliculas =[];
 
-        } catch (PDOExceptcion $e) {
-            echo $e->getMessage();
+        foreach ($cursor as $documento) {
+            $miPelicula = new Pelicula($documento["id"],$documento["titulo"],$documento["genero"],$documento["year"],$documento["sipnosis"],$documento["portada"]);
+            $listaPeliculas[]=$miPelicula;
         }
-        
-        $dbh = null;
 
-        return $listaPeliculas;*/
-            
+        $bd=null;
+        return $listaPeliculas;
     }
+
+
 
     //Mostrar pelicula por id
     public static function mostrarPorId($unId){

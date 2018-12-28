@@ -4,11 +4,15 @@
 	spl_autoload_register( function( $NombreClase ) {
 	    include_once($NombreClase . '.php');
 	} );
+	include 'cabecera.php';
 
 	?>
 
-	<header>
-		<h1>Listado de peliculas</h1>
+	<header class="container">
+		<div class="row">
+			<h1 class="display-3">Listado de peliculas</h1>
+		</div>
+		
 	</header>
 
 <?php
@@ -20,10 +24,19 @@ $listaPeliculas = BDPelicula::mostrar();
 ?>
 
 
-<section>
+<section class="container">
+<div class="row">
+		<!-- Boton añadir -->
+		<div class="boton col-12">
+			<a href="insertar.php"><button class="btn anadir btn-success">
+			<i class="fas fa-plus-circle"></i>
+			Añadir pelicula</button></a>
+		</div>
+	</div>
 
-<table>
- <tr>
+<div class="row">
+<table class="table table-bordered col-12">
+ <tr class="table-primary">
 	 <th>Titulo</th>
 	 <th>Genero</th>
 	 <th>Director</th>
@@ -42,16 +55,23 @@ $listaPeliculas = BDPelicula::mostrar();
 				<td><?php echo $pelicula->getYear() ?> </td>
 				<td><?php echo $pelicula->getSipnosis() ?></td>
 				<td><img width="200px" src="<?php echo $pelicula->getPortada() ?>"></td>
-				<td><a href="manager.php?accion=actualizar&id=<?php echo $pelicula->getId()?>">Actualizar</a></td>
-				<td><a href="manager.php?accion=eliminar&id=<?php echo $pelicula->getId()?>">Eliminar</a></td>
-				<td><a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>">Mostrar Criticas</a></td>
+				<td>
+				<a href="manager.php?accion=actualizar&id=<?php echo $pelicula->getId()?>">
+					<button class="btn btn-primary">
+					<i class="fas fa-wrench"></i>
+					Modificar</button>
+				</a>
+				<a href="manager.php?accion=eliminar&id=<?php echo $pelicula->getId()?>">
+					<button class="btn btn-danger">
+					<i class="fas fa-trash-alt"></i>
+					Eliminar</button>
+				</a>
+				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>">Mostrar Criticas</a></td>
 			</tr>
 <?php }?>
 
 </table>
-
-<a href="insertar.php" class="myButton">Añadir pelicula</a>
-
+</div>
 </section>
 
 
