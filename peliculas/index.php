@@ -45,6 +45,7 @@ $listaPeliculas = BDPelicula::mostrar();
 	 <th>Portada</th>
 	 <th>Editar</th>
 	 <th>Borrar</th>
+	 <th>Mostrar Criticas</th>
  </tr>
 
 <?php foreach ($listaPeliculas as $pelicula) {?>
@@ -61,11 +62,15 @@ $listaPeliculas = BDPelicula::mostrar();
 					<i class="fas fa-wrench"></i>
 					Modificar</button>
 				</a>
+			</td>
+				<td>
 				<a href="manager.php?accion=eliminar&id=<?php echo $pelicula->getId()?>">
 					<button class="btn btn-danger">
 					<i class="fas fa-trash-alt"></i>
 					Eliminar</button>
 				</a>
+				</td>
+				<td>
 				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>">Mostrar Criticas</a></td>
 			</tr>
 <?php }?>
