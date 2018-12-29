@@ -26,11 +26,7 @@ spl_autoload_register( function( $NombreClase ) {
     }
 
 
-<<<<<<< HEAD
 /*
-=======
-
->>>>>>> master
     //Mostrar pelicula por id
     public static function mostrarPorId($unId){
         $dbh = Db::conectar();
@@ -50,12 +46,8 @@ spl_autoload_register( function( $NombreClase ) {
         $dbh = null;
 
         return $mipelicula;
-            
-<<<<<<< HEAD
     }*/
-=======
     }
->>>>>>> master
 
     //Eliminar pelicula
     public static function eliminar($idPelicula){
@@ -82,8 +74,7 @@ public static function insertar($unaPelicula){
     try{
         //Preparar
         $stmt = $dbh->prepare("INSERT INTO pelicula (titulo,genero,director,year,sinopsis,portada) VALUES (:titulo,:genero,:director,:year,:sinopsis,:portada)");
-    // Bind
->>>>>>> master
+
     $stmt->bindValue(':titulo', $unaPelicula->getTitulo());
     $stmt->bindValue(':genero', $unaPelicula->getGenero());
     $stmt->bindValue(':director', $unaPelicula->getDirector());
@@ -91,7 +82,6 @@ public static function insertar($unaPelicula){
     $stmt->bindValue(':sinopsis', $unaPelicula->getSipnosis());
     $stmt->bindValue(':portada',null);
     
-<<<<<<< HEAD
     $documento = array(
         "titulo" => $unaPelicula->getTitulo(),
         "genero" => $unaPelicula->getGenero(),
@@ -102,7 +92,6 @@ public static function insertar($unaPelicula){
     );
 
     $coleccion->insertOne($documento);
-=======
     // Excecute
     $stmt->execute();
     
@@ -111,7 +100,6 @@ public static function insertar($unaPelicula){
         echo $e->getMessage();
     }
 
->>>>>>> master
     $dbh = null;
     
 }
