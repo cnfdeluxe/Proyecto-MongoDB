@@ -13,7 +13,7 @@ include "./includes/cabecera.php";
     <?php
     if (isset($_GET["id"])) {
         $unaReserva = CrudReserva::mostrarID($_GET['id']);
-        echo $_GET['id'];
+        echo $unaReserva->getId();
         echo $unaReserva->getFecha();
     }
     ?>
