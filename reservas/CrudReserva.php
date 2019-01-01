@@ -40,7 +40,7 @@ class CrudReserva {
         }
 
         $bd = null;
-        return $listaReservas;
+        return $listaReservas[0];
     }
 
     // método para mostrar todas las reservas
