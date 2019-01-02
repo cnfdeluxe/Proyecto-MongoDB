@@ -30,7 +30,7 @@ if (isset($_POST['insertar'])) {
 } else if (isset($_POST['actualizar'])) {
     $unaReserva = new Reserva($_POST['id'], $_POST['apellidos'], $_POST['nombre'], $_POST['fecha'], $_POST['hora'], $_POST['comensales']);
     CrudReserva::modificar($unaReserva);
-    //header("Location: reservas.php");
+    header("Location: reservas.php");
 }
 
 //Método para subir un fichero al servidor
