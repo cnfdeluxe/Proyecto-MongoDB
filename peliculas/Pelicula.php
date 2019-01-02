@@ -6,7 +6,7 @@ class Pelicula{
     private $genero;
     private $director;
     private $year;
-    private $sipnosis;
+    private $sinopsis;
     private $portada;
 
 
@@ -17,7 +17,7 @@ class Pelicula{
         $this->genero = $unGenero;
         $this->director = $unDirector;
         $this->year = $unYear;
-        $this->sipnosis = $unaSipnosis;
+        $this->sinopsis = $unaSipnosis;
         $this->portada = $unaPortada;
     }
 
@@ -41,8 +41,8 @@ class Pelicula{
     public function getYear(){
         return $this->year;
     }
-    public function getSipnosis(){
-        return $this->sipnosis;
+    public function getSinopsis(){
+        return $this->sinopsis;
     }
 
     public function getPortada(){
@@ -71,8 +71,8 @@ class Pelicula{
         $this->year = $unYear;
     }
 
-    public function setSipnosis($unaSipnosis){
-        $this->sipnosis = $unaSipnosis;
+    public function setSinopsis($unaSipnosis){
+        $this->sinopsis = $unaSipnosis;
     }
     public function setPortada($unaPortada){
         $this->portada = $unaPortada;

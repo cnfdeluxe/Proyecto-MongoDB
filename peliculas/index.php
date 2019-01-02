@@ -41,7 +41,7 @@ $listaPeliculas = BDPelicula::mostrar();
 	 <th>Genero</th>
 	 <th>Director</th>
 	 <th>Year</th>
-	 <th>Sipnosis</th>
+	 <th>Sinopsis</th>
 	 <th>Portada</th>
 	 <th>Editar</th>
 	 <th>Borrar</th>
@@ -54,7 +54,7 @@ $listaPeliculas = BDPelicula::mostrar();
 				<td><?php echo $pelicula->getGenero()?> </td>
 				<td><?php echo $pelicula->getDirector() ?></td>
 				<td><?php echo $pelicula->getYear() ?> </td>
-				<td><?php echo $pelicula->getSipnosis() ?></td>
+				<td><?php echo $pelicula->getSinopsis() ?></td>
 				<td><img width="200px" src="<?php echo $pelicula->getPortada() ?>"></td>
 				<td>
 				<a href="manager.php?accion=actualizar&id=<?php echo $pelicula->getId()?>">

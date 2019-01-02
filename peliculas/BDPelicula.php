@@ -16,7 +16,7 @@ spl_autoload_register( function( $NombreClase ) {
 
         //Buscamos todas las peliculas
         $cursor = $coleccion->find();
-        $listaPeliculas =[];
+        $listaPeliculas = [];
 
         foreach ($cursor as $documento) {
             $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sipnosis"],$documento["portada"]);
@@ -76,7 +76,7 @@ public static function insertar($unaPelicula){
         "genero" => $unaPelicula->getGenero(),
         "director" => $unaPelicula->getDirector(),
         "year" => $unaPelicula->getYear(),
-        "sipnosis" => $unaPelicula->getSipnosis(),
+        "sipnosis" => $unaPelicula->getSinopsis(),
         "portada" => $unaPelicula->getPortada()
     );
 
