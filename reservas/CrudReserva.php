@@ -34,6 +34,7 @@ class CrudReserva {
         //Buscamos todas las reservas
         $cursor = $coleccion->find(['_id' => new \MongoDB\BSON\ObjectId($unID)]);
         $listaReservas = [];
+        //Recorremos las reservas con ese id y las añadimos a un array
         foreach ($cursor as $documento) {
             $miReserva = new Reserva($documento["_id"], $documento["Apellidos"], $documento["Nombre"], $documento["Fecha"], $documento["Hora"], $documento["Comensales"]);
             $listaReservas[] = $miReserva;
@@ -106,16 +107,20 @@ class CrudReserva {
         }
     }
 
-    public static function modificar($Reserva) {
+    public static function modificar($unaReserva) {
         $bd = Db::conectar();
         //Dentro de la base de datos seleccionamos una colección (tabla)
         $coleccion = $bd->Reservas;
-        //Buscamos todas las reservas
-        $modificacion = $coleccion->updateOne(
-                ['_id' => $Reserva->getId()],
-                ['$set'=>['Fecha'=>$Reserva->getFecha()]]);
-        $dbh = null;
-        printf("Matched %d document(s)\n", $updateResult->getMatchedCount());
+        //Se le da formato a la fecha para que nos la muestre correctamente en el inicio
+        $date = new DateTime($unaReserva->getFecha());
+        $fecha = $date->format('d/m/Y');
+        //Se actualizan los datos del articulo de la coleccion con el id que le pasamos como parametro y se actualizan los valores pasados como segundo parametro
+        $coleccion->updateOne(
+            array('_id' => new \MongoDB\BSON\ObjectId($unaReserva->getId())),
+            array('$set' => array('Comensales' => $unaReserva->getComensales(),'Fecha' => $fecha,'Hora' => $unaReserva->getHora())
+            )
+        );
+        $bd = null;
     }
 
 }
