@@ -5,7 +5,7 @@ include "cabecera.php";
 <header class="cabecera">
 	<h1>Insertar pelicula</h1>
 </header>
-<section>
+<section class="form-insertar">
 
 <?php
 	if(!$_POST){
@@ -13,36 +13,36 @@ include "cabecera.php";
 ?>
 
 		<form action="manager.php" method="post" enctype="multipart/form-data">
-		 	
-		 	<section>
+		 <ul>
+		 	<li>
     			<label>Titulo:</label>
     			<input type="text" name="titulo" maxlength="100" required>
-			</section>
-			<section>
+			</li>
+			<li>
     			<label>Genero:</label>
     			<input type="text" name="genero" maxlength="100" required>
-			</section>
-			<section>
+			</li>
+			<li>
     			<label>Director:</label>
     			<input type="text" name="director" required>
-			</section>
-			<section>
+			</li>
+			<li>
     			<label>Año:</label>
     			<input type="number" name="year" required>
-    		</section>
-   			<section>
+    		</li>
+   			<li>
     			<label>Sipnosis:</label>
     			<textarea name="sipnosis" id="" cols="40" rows="5"></textarea>
-    		</section>
-   			<section>
+    		</li>
+   			<li>
     			<label>Portada:</label>
     			<input type="file" name="portada" required>
-    		</section>    		
-			<section>
+    		</li>    		
+			<li>
     			<label></label>
     			<input type="submit" name="insertar" value="Enviar">
-			</section>
-
+			</li>
+        </ul>
 		</form>
 
 

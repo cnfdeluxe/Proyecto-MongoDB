@@ -54,3 +54,14 @@ body{
 .form-list{
 	margin: 0 auto;
 }
+
+.form-insertar{
+	margin: 0 auto;
+}
+
+.form-insertar ul{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
