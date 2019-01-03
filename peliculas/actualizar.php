@@ -37,8 +37,8 @@ spl_autoload_register( function( $NombreClase ) {
     			<input type="number" name="year" value="<?php echo $unaPelicula->getYear() ?>" >
     		</section>
    			<section>
-    			<label>Sipnosis:</label>
-    			<textarea name="sipnosis" cols="40" rows="5"><?php echo $unaPelicula->getSipnosis() ?></textarea>
+    			<label>Sinopsis:</label>
+    			<textarea name="sinopsis" cols="40" rows="5"><?php echo $unaPelicula->getSinopsis() ?></textarea>
     		</section>
    			<section>
     			<label>Portada:</label>

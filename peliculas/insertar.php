@@ -31,8 +31,8 @@ include "cabecera.php";
     			<input type="number" name="year" required>
     		</section>
    			<section>
-    			<label>Sipnosis:</label>
-    			<textarea name="sipnosis" id="" cols="40" rows="5"></textarea>
+    			<label>Sinopsis:</label>
+    			<textarea name="sinopsis" id="" cols="40" rows="5"></textarea>
     		</section>
    			<section>
     			<label>Portada:</label>

@@ -11,13 +11,13 @@ class Pelicula{
 
 
     /*Constructor */
-    public function __construct($unId,$unTitulo,$unGenero,$unDirector,$unYear,$unaSipnosis,$unaPortada){
+    public function __construct($unId,$unTitulo,$unGenero,$unDirector,$unYear,$unaSinopsis,$unaPortada){
         $this->id = $unId;
         $this->titulo = $unTitulo;
         $this->genero = $unGenero;
         $this->director = $unDirector;
         $this->year = $unYear;
-        $this->sinopsis = $unaSipnosis;
+        $this->sinopsis = $unaSinopsis;
         $this->portada = $unaPortada;
     }
 
@@ -71,8 +71,8 @@ class Pelicula{
         $this->year = $unYear;
     }
 
-    public function setSinopsis($unaSipnosis){
-        $this->sinopsis = $unaSipnosis;
+    public function setSinopsis($unaSinopsis){
+        $this->sinopsis = $unaSinopsis;
     }
     public function setPortada($unaPortada){
         $this->portada = $unaPortada;
