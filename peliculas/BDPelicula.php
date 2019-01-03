@@ -105,37 +105,35 @@ public static function insertar($unaPelicula){
 
 }
 
+
+
 //Mostrar las criticas de una pelicula
 public static function mostrarCriticas($unId){
-        $bd = Db::conectar();
         
-        try {
-            $stmt = $bd->prepare("SELECT * FROM critica WHERE id_pelicula=:id");
-            $stmt->bindValue(":id",$unId);
-    //Antes de ejecutar la consulta se debe dar valor a la variable :genero
-        $stmt->execute();
-        $misCriticas = array();
-        $criticas = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $bd = db::conectar();
 
-        foreach ($criticas as $critica){
-            $miCritica = new Critica(0,$critica->id_pelicula,$critica->autor,$critica->texto,$critica->nota);
-            $misCriticas[] = $miCritica;
+    //Seleccionar la coleccion de criticas
+    $coleccion = $bd->criticas;
 
-        } 
-        } catch (PDOExceptcion $e) {
-            echo $e->getMessage();
+     //Buscamos todas las peliculas
+        $cursor = $coleccion->find();
+        $listaCriticas = [];
+
+        foreach ($cursor as $documento) {
+            $miCritica = new Critica($documento["_id"],$documento[$unId],$documento["texto"],$documento["autor"],$documento["nota"]);
+            //Almacenar cada pelicula en el array
+            $listaCriticas[]=$miCritica;
         }
-        
-        $bd = null;
+       
 
-        return $misCriticas;
-            
+        $bd=null;
+
+        return $listaCriticas;
+
     }
 
-
-
-
 }
+
 
     
 ?>
