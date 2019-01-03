@@ -71,7 +71,9 @@ $listaPeliculas = BDPelicula::mostrar();
 				</a>
 				</td>
 				<td>
-				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>">Mostrar Criticas</a></td>
+				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>"><button class="btn btn-warning"><i class="fas fa-user-edit"></i>Mostrar Criticas</button>
+					
+				</a></td>
 			</tr>
 <?php }?>
 
