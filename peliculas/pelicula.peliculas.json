@@ -1,0 +1,27 @@
+{
+	"_id" : ObjectId("5c2d5601f441c12a180078a9"),
+	"director" : "Taika Waititi",
+	"genero" : "Aventuras",
+	"portada" : "portadas/Thor Ragnarok.jpg",
+	"sinopsis" : "Thor está preso al otro lado del universo sin su poderoso martillo y se enfrenta a una carrera contra el tiempo. Su objetivo es volver a Asgard y parar el Ragnarok porque significaría la destrucción de su planeta natal.",
+	"titulo" : "Thor Ragnarok",
+	"year" : "2017"
+},
+{
+	"_id" : ObjectId("5c2d51ebf441c12a180078a8"),
+	"director" : "James Wan",
+	"genero" : "Accion",
+	"portada" : "portadas/Aquaman.jpg",
+	"sinopsis" : "Cuando Arthur Curry (Jason Momoa) descubre que es mitad humano y mitad atlante, emprenderá el viaje de su vida en esta aventura que no sólo le obligará a enfrentarse a quién es en realidad",
+	"titulo" : "Aquaman",
+	"year" : "2018"
+},
+{
+	"_id" : ObjectId("5c2d4f76f441c12a180078a7"),
+	"director" : "James Wan",
+	"genero" : "Accion",
+	"portada" : "portadas/Fast 7.jpg",
+	"sinopsis" : "Toretto vuelve a las calles despues de los acontecimientos de la Republica Dominicana. Dom reune a todo el equipo para una nueva misión.",
+	"titulo" : "Fast 7",
+	"year" : "2016"
+},
