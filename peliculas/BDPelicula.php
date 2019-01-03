@@ -19,7 +19,7 @@ spl_autoload_register( function( $NombreClase ) {
         $listaPeliculas = [];
 
         foreach ($cursor as $documento) {
-            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sinopsis"],$documento["portada"]);
+            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sipnosis"],$documento["portada"]);
             //Almacenar cada pelicula en el array
             $listaPeliculas[]=$miPelicula;
         }
