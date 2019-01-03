@@ -19,7 +19,7 @@ spl_autoload_register( function( $NombreClase ) {
         $listaPeliculas = [];
 
         foreach ($cursor as $documento) {
-            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sipnosis"],$documento["portada"]);
+            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sinopsis"],$documento["portada"]);
             //Almacenar cada pelicula en el array
             $listaPeliculas[]=$miPelicula;
         }
@@ -31,24 +31,22 @@ spl_autoload_register( function( $NombreClase ) {
 
     //Mostrar pelicula por id
     public static function mostrarPorId($unId){
-        $dbh = Db::conectar();
-        
-        try {
-            $stmt = $dbh->prepare("SELECT * FROM pelicula WHERE id_pelicula=:id");
-            $stmt->bindValue(":id",$unId);
-    //Antes de ejecutar la consulta se debe dar valor a la variable :genero
-        $stmt->execute();
-        $pelicula = $stmt->fetch(PDO::FETCH_OBJ);
-        $mipelicula = new Pelicula($pelicula->id_pelicula,$pelicula->titulo,$pelicula->genero,$pelicula->director,$pelicula->year,$pelicula->sinopsis,$pelicula->portada);
-        
-        } catch (PDOExceptcion $e) {
-            echo $e->getMessage();
+        //Conexión con BD
+        $bd = db::conectar();
+
+        //Dentro de la BD pelicula, selección de la colección peliculas
+        $coleccion = $bd->peliculas;
+        //Buscar todas las peliculas por ID
+        $cursor = $coleccion->find(['_id' => new \MongoDB\BSON\ObjectId($unId)]);
+        $listaPeliculas = [];
+        //Recorrer las peliculas con ese id y se añaden al array $listaPeliculas
+        foreach ($cursor as $documento) {
+            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sinopsis"],$documento["portada"]);
+            $listaPeliculas []= $miPelicula;
         }
         
-        $dbh = null;
-
-        return $mipelicula;
-            
+        $bd = null;
+        return $miPelicula;
 
     }
 
@@ -67,46 +65,52 @@ spl_autoload_register( function( $NombreClase ) {
 public static function insertar($unaPelicula){
 
     //Se establece la conexión
-    $dbh = db::conectar();
+    $bd = db::conectar();
 
-    $coleccion = $dbh->peliculas;
+    $coleccion = $bd->peliculas;
 
     $documento = array(
         "titulo" => $unaPelicula->getTitulo(),
         "genero" => $unaPelicula->getGenero(),
         "director" => $unaPelicula->getDirector(),
         "year" => $unaPelicula->getYear(),
-        "sipnosis" => $unaPelicula->getSinopsis(),
+        "sinopsis" => $unaPelicula->getSinopsis(),
         "portada" => $unaPelicula->getPortada()
     );
 
     $coleccion->insertOne($documento);
 
-    $dbh = null;
+    $bd = null;
     
 }
 
 
  //Modificar pelicula
     public static function modificar($unaPelicula){
-            $dbh = db::conectar();
+            $bd = db::conectar();
             //Consulto con la base de datos 
-            $coleccion = $dbh->peliculas;
+            $coleccion = $bd->peliculas;
             
+            //Se actualizan los valores
+            //Primer parametro el id obtenido de la peli
+            //Segundo parametro un array con todos los campos a modificar de la peli
+            $coleccion->updateOne(
+                array('_id' => new \MongoDB\BSON\ObjectId($unaPelicula->getId())),
+                array('$set' => array('titulo' => $unaPelicula->getTitulo(),'genero' => $unaPelicula->getGenero(),'director' => $unaPelicula->getDirector(),'year' => $unaPelicula->getYear(), 'sinopsis' => $unaPelicula->getSinopsis(), 'portada' => $unaPelicula->getPortada())
+            )
+            );
 
-            $coleccion->updateMany();
 
-
-            $dbh = null;
+            $bd = null;
 
 }
 
 //Mostrar las criticas de una pelicula
 public static function mostrarCriticas($unId){
-        $dbh = Db::conectar();
+        $bd = Db::conectar();
         
         try {
-            $stmt = $dbh->prepare("SELECT * FROM critica WHERE id_pelicula=:id");
+            $stmt = $bd->prepare("SELECT * FROM critica WHERE id_pelicula=:id");
             $stmt->bindValue(":id",$unId);
     //Antes de ejecutar la consulta se debe dar valor a la variable :genero
         $stmt->execute();
@@ -122,7 +126,7 @@ public static function mostrarCriticas($unId){
             echo $e->getMessage();
         }
         
-        $dbh = null;
+        $bd = null;
 
         return $misCriticas;
             
