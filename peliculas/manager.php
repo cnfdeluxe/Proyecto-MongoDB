@@ -18,7 +18,7 @@ if (isset($_GET['accion'])) {
         header("Location: actualizar.php?id=".$_GET['id']);
         //Se comprueba si hay criticas
     }else if ($_GET['accion'] == 'criticas') {
-        header("Location: criticas.php?id=".$_GET['id']);
+        header("Location: insertar_critica.php?id=".$_GET['id']);
     }
     
 }
@@ -35,8 +35,12 @@ if (isset($_POST['insertar'])) {
     BDPelicula::modificar($pelicula);
     header('Location: index.php');
     
-}
+} else if (isset($_POST['criticas'])) {
+    $critica = new Critica(0, 0, filtrado($_POST['autor']),filtrado($_POST['texto']),filtrado($_POST['nota']));
 
+    BDPelicula::insertarCritica($critica);
+    header('Location: index.php');
+}
 
 //Metodo para subir un fichero al servidor
 function subir(){
