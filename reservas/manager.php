@@ -4,6 +4,8 @@ spl_autoload_register(function( $NombreClase ) {
     include_once($NombreClase . '.php');
 });
 
+include 'Filtrado.php';
+
 //Se comprueba que hemos pulsado actualizar o eliminar
 if (isset($_GET['accion'])) {
     if ($_GET['accion'] == "e") {
@@ -20,7 +22,7 @@ if (isset($_GET['accion'])) {
 //Se comprueba que hemos recibido los datos del formulario de insertar película
 if (isset($_POST['insertar'])) {
 
-    $unaReserva = new Reserva(0, $_POST['apellidos'], $_POST['nombre'], $_POST['fecha'], $_POST['hora'], $_POST['comensales']);
+    $unaReserva = new Reserva(0, filtrado($_POST['apellidos']),filtrado($_POST['nombre']),filtrado($_POST['fecha']),filtrado($_POST['hora']), filtrado($_POST['comensales']));
 
     if (CrudReserva::insertar($unaReserva)) {
         header("Location: reservas.php");
@@ -28,7 +30,7 @@ if (isset($_POST['insertar'])) {
         header("Location: superado_aforo.php");
     }
 } else if (isset($_POST['actualizar'])) {
-    $unaReserva = new Reserva($_POST['id'], $_POST['apellidos'], $_POST['nombre'], $_POST['fecha'], $_POST['hora'], $_POST['comensales']);
+    $unaReserva = new Reserva(filtrado($_POST['id']),filtrado($_POST['apellidos']),filtrado($_POST['nombre']),filtrado($_POST['fecha']),filtrado($_POST['hora']), filtrado($_POST['comensales']));
     CrudReserva::modificar($unaReserva);
     header("Location: reservas.php");
 }
@@ -58,7 +60,7 @@ function subir() {
             } else {
                 //Nos podemos fiar completamente que el archivo es una imagen y lo movemos a su sitio
                 $ruta = "";
-                $ruta = "carteles/" . $_POST['titulo'] . ".jpg";
+                $ruta = "carteles/" . filtrado($_POST['titulo']) . ".jpg";
                 if (move_uploaded_file($_FILES["cartel"]["tmp_name"], $ruta)) {
                     return $ruta;
                 } else {
