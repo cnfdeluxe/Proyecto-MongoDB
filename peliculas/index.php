@@ -55,7 +55,7 @@ $listaPeliculas = BDPelicula::mostrar();
 				<td><?php echo $pelicula->getDirector() ?></td>
 				<td><?php echo $pelicula->getYear() ?> </td>
 				<td><?php echo $pelicula->getSinopsis() ?></td>
-				<td><img width="200px" src="<?php echo $pelicula->getPortada() ?>"></td>
+				<td><img width="100px" height="150px" src="<?php echo $pelicula->getPortada() ?>"></td>
 				<td>
 				<a href="manager.php?accion=actualizar&id=<?php echo $pelicula->getId()?>">
 					<button class="btn btn-primary">
@@ -71,7 +71,7 @@ $listaPeliculas = BDPelicula::mostrar();
 				</a>
 				</td>
 				<td>
-				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>"><button class="btn btn-warning"><i class="fas fa-user-edit"></i>Añadir Criticas</button>
+				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>"><button class="btn btn-warning"><i class="fas fa-user-edit"></i>Ver Criticas</button>
 					
 				</a></td>
 			</tr>
