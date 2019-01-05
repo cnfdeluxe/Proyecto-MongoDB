@@ -54,3 +54,33 @@ body{
 .form-list{
 	margin: 0 auto;
 }
+
+/*ESTILO PARA CRITICAS*/
+.criticas{
+	padding: 35px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.title-peli{
+	font-style: italic;
+	padding: 15px;
+}
+
+.criticas h4{
+	text-decoration: underline;
+}
+
+.img-critica{
+	width: 120px;
+	height: 135px;
+}
+
+.carta-critica{
+	width: 300px;	
+	box-shadow:1px 1px 4px 10px;
+	padding: 10px 10px;
+	margin: 16px 0px;
+}
