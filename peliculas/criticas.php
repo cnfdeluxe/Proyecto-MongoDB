@@ -5,52 +5,40 @@
 	    include_once($NombreClase . '.php');
 	} );
 
+	include 'cabecera.php';
 	?>
 
-
 <?php
-
-//No hace falta constructor de la clase BDPeliculas porque he hecho estatico el metodo mostrar()
+//Si existe el id, obtener la pelicula de dicho id
 if (isset($_GET['id'])){
 	$unaPelicula = BDPelicula::mostrarPorId($_GET['id']);
-	$listaCriticas =BDPelicula::mostrarCriticas($_GET['id']);
-
 }
-
 
 ?>
 
 	<header>
-		<h1>Listado de criticas para <?php echo $unaPelicula->getTitulo(); ?></h1>
+		<h1 class="title-peli">Listado de criticas para <?php echo $unaPelicula->getTitulo(); ?></h1>
 
 	</header>
 
-<section>
-
-<table>
- <tr>
-	 <th>Autor</th>
-	 <th>Texto</th>
-	 <th>Nota</th>
-	 <th>Borrar</th>
- </tr>
-
-<?php foreach ($listaCriticas as $critica) {?>
-			<tr>
-				<td><?php echo $critica->getAutor() ?></td>
-				<td><?php echo $critica->getTexto()?> </td>
-				<td><?php echo $critica->getNota() ?></td>
-				<td><a href="manager.php?accion=eliminar&id=<?php echo $critica->getIdCritica()?>">Eliminar</a></td>
-				
-			</tr>
-<?php }?>
-
-</table>
+<section class="criticas">
+<?php 
+	$cont = 0;
+	//Recorrer todas las criticas almacenadas en el array
+	foreach ($unaPelicula->getCritica() as $critica) {
+		print "<div class='card carta-critica'>";
+		print "<img src='".$unaPelicula->getPortada()."' class='card-img-top img-critica' alt='img-portada'>";
+		$cont++;
+			print "<h4>Critica nº ". $cont ."</h4>";
+			//Imprimir cada critica con su campo y valor
+		foreach ($critica as $campo => $valor) {
+			print "<strong>".$campo.":</strong> ".$valor."\n";
+		}
+		print "</div>";
+	}
+ ?>
 
 </section>
-
-
-
 
 
 

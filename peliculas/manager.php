@@ -4,6 +4,8 @@ spl_autoload_register( function( $NombreClase ) {
     include_once($NombreClase . '.php');
 } );
 
+include 'Filtrado.php';
+
 //Comprobamos que hemos pulsado actualizar o borrar
 if (isset($_GET['accion'])) {
     if($_GET['accion'] == "eliminar"){
@@ -23,18 +25,17 @@ if (isset($_GET['accion'])) {
 
 //Se comprueba que hemos recibido los datos del formulario de inserter pelicula
 if (isset($_POST['insertar'])) {
-    $pelicula = new Pelicula(0,$_POST['titulo'],$_POST['genero'],$_POST['director'],$_POST['year'],$_POST['sipnosis'],subir());
+    $pelicula = new Pelicula(0,$_POST['titulo'],$_POST['genero'],$_POST['director'],$_POST['year'],$_POST['sinopsis'],subir());
     BDPelicula::insertar($pelicula);
     header('Location: index.php');
     
 }else if (isset($_POST['actualizar'])) {
-    $pelicula = new Pelicula($_POST['id'],$_POST['titulo'],$_POST['genero'],$_POST['director'],$_POST['year'],$_POST['sipnosis'],subir());
+    $pelicula = new Pelicula(filtrado($_POST['id']),filtrado($_POST['titulo']),filtrado($_POST['genero']),filtrado($_POST['director']),filtrado($_POST['year']),filtrado($_POST['sinopsis']),subir());
 
     BDPelicula::modificar($pelicula);
     header('Location: index.php');
     
 }
-
 
 //Metodo para subir un fichero al servidor
 function subir(){
@@ -62,7 +63,7 @@ function subir(){
                 }else{          
                     //Nos podemos fiar completamente que el archivo es una imagen y lo movemos a su sitio
                         $ruta = "";
-                        $ruta = "portadas/".$_POST['titulo'].".jpg";
+                        $ruta = "portadas/".filtrado($_POST['titulo']).".jpg";
 
                     if(move_uploaded_file($_FILES["portada"]["tmp_name"], $ruta)) {
                         return $ruta;
