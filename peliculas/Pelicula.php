@@ -6,23 +6,26 @@ class Pelicula{
     private $genero;
     private $director;
     private $year;
-    private $sipnosis;
+    private $sinopsis;
     private $portada;
+    private $critica;
 
 
-    /*Constructor */
-    public function __construct($unId,$unTitulo,$unGenero,$unDirector,$unYear,$unaSipnosis,$unaPortada){
+    //Constructor
+    public function __construct($unId,$unTitulo,$unGenero,$unDirector,$unYear,$unaSinopsis,$unaPortada, $unaCritica = null){
         $this->id = $unId;
         $this->titulo = $unTitulo;
         $this->genero = $unGenero;
         $this->director = $unDirector;
         $this->year = $unYear;
-        $this->sipnosis = $unaSipnosis;
+        $this->sinopsis = $unaSinopsis;
         $this->portada = $unaPortada;
+        $this->critica = $unaCritica;
+
     }
 
 
-    /*getters*/ 
+    //Getters 
     public function getId(){
         return $this->id;
     }
@@ -41,16 +44,19 @@ class Pelicula{
     public function getYear(){
         return $this->year;
     }
-    public function getSipnosis(){
-        return $this->sipnosis;
+    public function getSinopsis(){
+        return $this->sinopsis;
     }
 
     public function getPortada(){
         return $this->portada;
     }
+    public function getCritica(){
+        return $this->critica;
+    }
 
 
-    /*setters*/ 
+    //Setters
     public function setId($unId){
         $this->id = $unId;
     }
@@ -71,11 +77,14 @@ class Pelicula{
         $this->year = $unYear;
     }
 
-    public function setSipnosis($unaSipnosis){
-        $this->sipnosis = $unaSipnosis;
+    public function setSinopsis($unaSinopsis){
+        $this->sinopsis = $unaSinopsis;
     }
     public function setPortada($unaPortada){
         $this->portada = $unaPortada;
+    }
+    public function setCritica($unaCritica){
+        $this->critica = $unaCritica;
     }
 
 

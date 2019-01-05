@@ -41,10 +41,11 @@ $listaPeliculas = BDPelicula::mostrar();
 	 <th>Genero</th>
 	 <th>Director</th>
 	 <th>Year</th>
-	 <th>Sipnosis</th>
+	 <th>Sinopsis</th>
 	 <th>Portada</th>
 	 <th>Editar</th>
 	 <th>Borrar</th>
+	 <th>Mostrar Criticas</th>
  </tr>
 
 <?php foreach ($listaPeliculas as $pelicula) {?>
@@ -53,20 +54,26 @@ $listaPeliculas = BDPelicula::mostrar();
 				<td><?php echo $pelicula->getGenero()?> </td>
 				<td><?php echo $pelicula->getDirector() ?></td>
 				<td><?php echo $pelicula->getYear() ?> </td>
-				<td><?php echo $pelicula->getSipnosis() ?></td>
-				<td><img width="200px" src="<?php echo $pelicula->getPortada() ?>"></td>
+				<td><?php echo $pelicula->getSinopsis() ?></td>
+				<td><img width="100px" height="150px" src="<?php echo $pelicula->getPortada() ?>"></td>
 				<td>
 				<a href="manager.php?accion=actualizar&id=<?php echo $pelicula->getId()?>">
 					<button class="btn btn-primary">
 					<i class="fas fa-wrench"></i>
 					Modificar</button>
 				</a>
+			</td>
+				<td>
 				<a href="manager.php?accion=eliminar&id=<?php echo $pelicula->getId()?>">
 					<button class="btn btn-danger">
 					<i class="fas fa-trash-alt"></i>
 					Eliminar</button>
 				</a>
-				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>">Mostrar Criticas</a></td>
+				</td>
+				<td>
+				<a href="manager.php?accion=criticas&id=<?php echo $pelicula->getId()?>"><button class="btn btn-warning"><i class="fas fa-user-edit"></i>Ver Criticas</button>
+					
+				</a></td>
 			</tr>
 <?php }?>
 

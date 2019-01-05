@@ -1,3 +1,9 @@
+*{
+	box-sizing: border-box;
+  	margin: 0;
+  	padding: 0;
+}
+
 body{
 	background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(194, 229,
 156), rgb(100, 179, 244)) repeat scroll 0% 0%;
@@ -54,6 +60,54 @@ body{
 .form-list{
 	margin: 0 auto;
 }
+
+/*ESTILO PARA CRITICAS*/
+.criticas{
+	padding: 35px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.title-peli{
+	font-style: italic;
+	padding: 15px;
+}
+
+.criticas h4{
+	text-decoration: underline;
+}
+
+.img-critica{
+	width: 120px;
+	height: 135px;
+}
+
+.carta-critica{
+	width: 300px;	
+	box-shadow:1px 1px 4px 10px;
+	padding: 10px 10px;
+	margin: 16px 0px;
+}
+
+/*Estilos insertar pelicula*/
+.form-insert{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	list-style-type: none;
+}
+
+.form-insert li input[type="number"]{
+	width: 40%;	
+}
+
+.back{
+	float: right;
+	padding: 40px 80px;
+}
+
 
 .form-insertar{
 	margin: 0 auto;
