@@ -1,5 +1,17 @@
 {
-	"_id" : ObjectId("5c2d5601f441c12a180078a9"),
+	"_id" : ObjectId("5c2fc223c141b831d4153f77"),
+	"critica" : [
+		{
+		"texto" : "Pelicula aceptable",
+		"autor" : "Juan Martinez",
+		"nota" : 6
+	},
+		{
+		"texto" : "Peliculon, para mi es digna de ir a ver las 2 horas y media que dura.",
+		"autor" : "Roberto",
+		"nota" : 9
+	}
+	],
 	"director" : "Taika Waititi",
 	"genero" : "Aventuras",
 	"portada" : "portadas/Thor Ragnarok.jpg",
@@ -9,6 +21,13 @@
 },
 {
 	"_id" : ObjectId("5c2d51ebf441c12a180078a8"),
+	"critica" : [
+		{
+		"texto" : "mierda peli",
+		"autor" : "Cristian",
+		"nota" : 3
+	}
+	],
 	"director" : "James Wan",
 	"genero" : "Accion",
 	"portada" : "portadas/Aquaman.jpg",
@@ -18,6 +37,13 @@
 },
 {
 	"_id" : ObjectId("5c2d4f76f441c12a180078a7"),
+	"critica" : [
+		{
+		"texto" : "Peli notable",
+		"autor" : "Adrian",
+		"nota" : 7
+	}
+	],
 	"director" : "James Wan",
 	"genero" : "Accion",
 	"portada" : "portadas/Fast 7.jpg",
