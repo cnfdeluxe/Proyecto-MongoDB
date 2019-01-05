@@ -108,3 +108,14 @@ body{
 	padding: 40px 80px;
 }
 
+
+.form-insertar{
+	margin: 0 auto;
+}
+
+.form-insertar ul{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
