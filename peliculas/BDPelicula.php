@@ -96,7 +96,7 @@ public static function insertar($unaPelicula){
             //Segundo parametro un array con todos los campos a modificar de la peli
             $coleccion->updateOne(
                 array('_id' => new \MongoDB\BSON\ObjectId($unaPelicula->getId())),
-                array('$set' => array('titulo' => $unaPelicula->getTitulo(),'genero' => $unaPelicula->getGenero(),'director' => $unaPelicula->getDirector(),'year' => $unaPelicula->getYear(), 'sinopsis' => $unaPelicula->getSinopsis(), 'portada' => $unaPelicula->getPortada(), 'critica' => "")
+                array('$set' => array('titulo' => $unaPelicula->getTitulo(),'genero' => $unaPelicula->getGenero(),'director' => $unaPelicula->getDirector(),'year' => $unaPelicula->getYear(), 'sinopsis' => $unaPelicula->getSinopsis(), 'portada' => $unaPelicula->getPortada())
             )
             );
 
@@ -105,32 +105,6 @@ public static function insertar($unaPelicula){
 
 }
 
-
-
-//Mostrar las criticas de una pelicula
-public static function mostrarCriticas($unId){
-        
-    $bd = db::conectar();
-
-    //Seleccionar la coleccion de pelicula
-    $coleccion = $bd->pelicula;
-
-     //Buscamos todas las peliculas
-        $cursor = $coleccion->find();
-        $listaCriticas = [];
-
-        foreach ($cursor as $documento) {
-            $miCritica = new Critica($documento["_id"],$documento[$unId],$documento["texto"],$documento["autor"],$documento["nota"]);
-            //Almacenar cada pelicula en el array
-            $listaCriticas[]=$miCritica;
-        }
-       
-
-        $bd=null;
-
-        return $listaCriticas;
-
-    }
 
 }
 

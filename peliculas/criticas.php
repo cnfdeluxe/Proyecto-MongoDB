@@ -9,12 +9,9 @@
 	?>
 
 <?php
-
-//No hace falta constructor de la clase BDPeliculas porque he hecho estatico el metodo mostrar()
+//Si existe el id, obtener la pelicula de dicho id
 if (isset($_GET['id'])){
 	$unaPelicula = BDPelicula::mostrarPorId($_GET['id']);
-	$listaCriticas =BDPelicula::mostrarCriticas($_GET['id']);
-
 }
 
 ?>
@@ -27,9 +24,11 @@ if (isset($_GET['id'])){
 <section>
 <?php 
 	$cont = 0;
+	//Recorrer todas las criticas almacenadas en el array
 	foreach ($unaPelicula->getCritica() as $critica) {
 		$cont++;
 			print "<h4>Critica nº ". $cont ."</h4>";
+			//Imprimir cada critica con su campo y valor
 		foreach ($critica as $campo => $valor) {
 			print $campo.": ".$valor."<br>";
 		}

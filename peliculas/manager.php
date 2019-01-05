@@ -35,11 +35,6 @@ if (isset($_POST['insertar'])) {
     BDPelicula::modificar($pelicula);
     header('Location: index.php');
     
-} else if (isset($_POST['criticas'])) {
-    $critica = new Critica(0, 0, filtrado($_POST['autor']),filtrado($_POST['texto']),filtrado($_POST['nota']));
-
-    BDPelicula::insertarCritica($critica);
-    header('Location: index.php');
 }
 
 //Metodo para subir un fichero al servidor
