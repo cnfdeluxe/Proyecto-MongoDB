@@ -19,7 +19,7 @@ spl_autoload_register( function( $NombreClase ) {
         $listaPeliculas = [];
 
         foreach ($cursor as $documento) {
-            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sipnosis"],$documento["portada"]);
+            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sinopsis"],$documento["portada"],$documento["critica"]);
             //Almacenar cada pelicula en el array
             $listaPeliculas[]=$miPelicula;
         }
@@ -41,7 +41,7 @@ spl_autoload_register( function( $NombreClase ) {
         $listaPeliculas = [];
         //Recorrer las peliculas con ese id y se añaden al array $listaPeliculas
         foreach ($cursor as $documento) {
-            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sinopsis"],$documento["portada"]);
+            $miPelicula = new Pelicula($documento["_id"],$documento["titulo"],$documento["genero"],$documento["director"],$documento["year"],$documento["sinopsis"],$documento["portada"],$documento["critica"]);
             $listaPeliculas []= $miPelicula;
         }
         
@@ -96,7 +96,7 @@ public static function insertar($unaPelicula){
             //Segundo parametro un array con todos los campos a modificar de la peli
             $coleccion->updateOne(
                 array('_id' => new \MongoDB\BSON\ObjectId($unaPelicula->getId())),
-                array('$set' => array('titulo' => $unaPelicula->getTitulo(),'genero' => $unaPelicula->getGenero(),'director' => $unaPelicula->getDirector(),'year' => $unaPelicula->getYear(), 'sinopsis' => $unaPelicula->getSinopsis(), 'portada' => $unaPelicula->getPortada())
+                array('$set' => array('titulo' => $unaPelicula->getTitulo(),'genero' => $unaPelicula->getGenero(),'director' => $unaPelicula->getDirector(),'year' => $unaPelicula->getYear(), 'sinopsis' => $unaPelicula->getSinopsis(), 'portada' => $unaPelicula->getPortada(), 'critica' => "")
             )
             );
 
@@ -112,8 +112,8 @@ public static function mostrarCriticas($unId){
         
     $bd = db::conectar();
 
-    //Seleccionar la coleccion de criticas
-    $coleccion = $bd->criticas;
+    //Seleccionar la coleccion de pelicula
+    $coleccion = $bd->pelicula;
 
      //Buscamos todas las peliculas
         $cursor = $coleccion->find();

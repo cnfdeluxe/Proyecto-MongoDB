@@ -5,8 +5,8 @@
 	    include_once($NombreClase . '.php');
 	} );
 
+	include 'cabecera.php';
 	?>
-
 
 <?php
 
@@ -17,7 +17,6 @@ if (isset($_GET['id'])){
 
 }
 
-
 ?>
 
 	<header>
@@ -26,26 +25,16 @@ if (isset($_GET['id'])){
 	</header>
 
 <section>
-
-<table>
- <tr>
-	 <th>Autor</th>
-	 <th>Texto</th>
-	 <th>Nota</th>
-	 <th>Borrar</th>
- </tr>
-
-<?php foreach ($listaCriticas as $critica) {?>
-			<tr>
-				<td><?php echo $critica->getAutor() ?></td>
-				<td><?php echo $critica->getTexto()?> </td>
-				<td><?php echo $critica->getNota() ?></td>
-				<td><a href="manager.php?accion=eliminar&id=<?php echo $critica->getIdCritica()?>">Eliminar</a></td>
-				
-			</tr>
-<?php }?>
-
-</table>
+<?php 
+	$cont = 0;
+	foreach ($unaPelicula->getCritica() as $critica) {
+		$cont++;
+			print "<h4>Critica nº ". $cont ."</h4>";
+		foreach ($critica as $campo => $valor) {
+			print $campo.": ".$valor."<br>";
+		}
+	}
+ ?>
 
 </section>
 

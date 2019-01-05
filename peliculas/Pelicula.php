@@ -8,10 +8,11 @@ class Pelicula{
     private $year;
     private $sinopsis;
     private $portada;
+    private $critica;
 
 
-    /*Constructor */
-    public function __construct($unId,$unTitulo,$unGenero,$unDirector,$unYear,$unaSinopsis,$unaPortada){
+    //Constructor
+    public function __construct($unId,$unTitulo,$unGenero,$unDirector,$unYear,$unaSinopsis,$unaPortada, $unaCritica = null){
         $this->id = $unId;
         $this->titulo = $unTitulo;
         $this->genero = $unGenero;
@@ -19,10 +20,12 @@ class Pelicula{
         $this->year = $unYear;
         $this->sinopsis = $unaSinopsis;
         $this->portada = $unaPortada;
+        $this->critica = $unaCritica;
+
     }
 
 
-    /*getters*/ 
+    //Getters 
     public function getId(){
         return $this->id;
     }
@@ -48,9 +51,12 @@ class Pelicula{
     public function getPortada(){
         return $this->portada;
     }
+    public function getCritica(){
+        return $this->critica;
+    }
 
 
-    /*setters*/ 
+    //Setters
     public function setId($unId){
         $this->id = $unId;
     }
@@ -76,6 +82,9 @@ class Pelicula{
     }
     public function setPortada($unaPortada){
         $this->portada = $unaPortada;
+    }
+    public function setCritica($unaCritica){
+        $this->critica = $unaCritica;
     }
 
 

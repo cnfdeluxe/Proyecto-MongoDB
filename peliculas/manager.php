@@ -18,7 +18,7 @@ if (isset($_GET['accion'])) {
         header("Location: actualizar.php?id=".$_GET['id']);
         //Se comprueba si hay criticas
     }else if ($_GET['accion'] == 'criticas') {
-        header("Location: insertar_critica.php?id=".$_GET['id']);
+        header("Location: criticas.php?id=".$_GET['id']);
     }
     
 }
