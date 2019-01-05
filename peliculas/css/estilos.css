@@ -1,3 +1,9 @@
+*{
+	box-sizing: border-box;
+  	margin: 0;
+  	padding: 0;
+}
+
 body{
 	background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(194, 229,
 156), rgb(100, 179, 244)) repeat scroll 0% 0%;
@@ -84,3 +90,21 @@ body{
 	padding: 10px 10px;
 	margin: 16px 0px;
 }
+
+/*Estilos insertar pelicula*/
+.form-insert{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	list-style-type: none;
+}
+
+.form-insert li input[type="number"]{
+	width: 40%;	
+}
+
+.back{
+	float: right;
+	padding: 40px 80px;
+}
+
